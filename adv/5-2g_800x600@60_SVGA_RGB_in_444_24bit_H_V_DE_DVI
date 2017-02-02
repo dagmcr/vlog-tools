@@ -1,0 +1,34 @@
+WR 50 10 01 05 ; Data output mode
+WR 50 11 01 08 ; Bus Reversal
+WR 50 19 01 10 ; ADV7842 Mode
+WR 50 1B 01 02 ; ADV7511
+WR 40 FF 01 80 ; I2C reset
+WR 40 F1 01 90 ; SDP map
+WR 40 F2 01 94 ; SDPIO map
+WR 40 F3 01 84 ; AVLINK
+WR 40 F4 01 80 ; CEC
+WR 40 F5 01 7C ; INFOFRAME
+WR 40 F8 01 4C ; AFE
+WR 40 F9 01 64 ; KSV
+WR 40 FA 01 6C ; EDID
+WR 40 FB 01 68 ; HDMI
+WR 40 FD 01 44 ; CP
+WR 40 FE 01 48 ; VDP
+WR 40 00 01 01 ; VID_STD=00001b for SVGA60
+WR 40 01 01 82 ; Prim_Mode to graphics input
+WR 40 02 01 F6 ; Auto input color space, Limited Range RGB Output
+WR 40 03 01 40 ; 24 bit SDR 444
+WR 40 05 01 28 ; Disable AV Codes
+WR 40 0C 01 40 ; Power up Part
+WR 40 15 01 B0 ; Disable Tristate of Pins except for Audio pins
+WR 44 73 01 EA ; Set manual gain of 0x2A8
+WR 44 74 01 8A ; Set manual gain of 0x2A8
+WR 44 75 01 A2 ; Set manual gain of 0x2A8
+WR 44 76 01 A8 ; Set manual gain of 0x2A8
+WR 44 85 01 0B ; Disable Autodetectmode for Sync_Source for CH1. Force CH1 to use HS&VS
+WR 44 C3 01 39 ; ADI recommended write
+WR 4C 0C 01 1F ; ADI recommended write
+WR 4C 12 01 63 ; ADI recommended write
+WR 4C 00 01 80 ; ADC power Up
+WR 4C 02 01 00 ; Ain_Sel to 000. (Ain 1,2,3)
+WR 4C C8 01 00 ; DLL_PHASE - 000000b

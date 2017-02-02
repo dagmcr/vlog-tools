@@ -1,0 +1,56 @@
+WR 50 10 01 05 ; Data output mode
+WR 50 11 01 08 ; Bus Reversal
+WR 50 19 01 10 ; ADV7842 Mode
+WR 50 1B 01 02 ; ADV7511
+WR 40 FF 01 80 ; I2C reset
+WR 40 F1 01 90 ; SDP map
+WR 40 F2 01 94 ; SDPIO map
+WR 40 F3 01 84 ; AVLINK
+WR 40 F4 01 80 ; CEC
+WR 40 F5 01 7C ; INFOFRAME
+WR 40 F8 01 4C ; AFE
+WR 40 F9 01 64 ; KSV
+WR 40 FA 01 6C ; EDID
+WR 40 FB 01 68 ; HDMI
+WR 40 FD 01 44 ; CP
+WR 40 FE 01 48 ; VDP
+WR 40 02 01 F6 ; Auto input color space, Limited Range RGB Output
+WR 40 03 01 40 ; 24 bit SDR 444
+WR 40 05 01 28 ; Disable AV Codes
+WR 40 0C 01 40 ; Power up Part
+WR 40 15 01 B0 ; Disable Tristate of Pins except for Audio pins
+WR 40 19 01 80 ; enable LLC DLL
+WR 40 33 01 40 ; select DLL for LLC clock
+WR 44 73 01 EA ; Set manual gain of 0x2A8
+WR 44 74 01 8A ; Set manual gain of 0x2A8
+WR 44 75 01 A2 ; Set manual gain of 0x2A8
+WR 44 76 01 A8 ; Set manual gain of 0x2A8
+WR 44 85 01 0B ; Disable Autodetectmode for Sync_Source for CH1. Force CH1 to use HS&VS
+WR 44 BE 01 02 ; HCOUNT ALIGN ADJ
+WR 44 BF 01 12 ; HCOUNT ALIGN ADJ
+WR 44 C3 01 39 ; ADI recommended write
+WR 4C 0C 01 1F ; ADI Recommended write
+WR 4C 12 01 63 ; ADI recommended write
+WR 4C 00 01 80 ; ADC power Up
+WR 4C 02 01 00 ; Ain_Sel to 000. (Ain 1,2,3)
+WR 4C C8 01 33 ; DLL Phase, 110011b
+WR 40 00 01 07 ; Set VID_STD to 0b000111 for autographics
+WR 40 01 01 02 ; Set PRIM_MODE to 0b0010 for graphics mode
+WR 40 16 01 C7 ; set PLL for 1800 samples per line
+WR 40 17 01 08 ; set PLL for 1800 samples per line
+WR 44 81 01 D0 ; enable blue screen freerun in autographics mode
+WR 44 8B 01 43 ; set horizontal DE start/end position
+WR 44 8C 01 D9 ; set horizontal DE start/end position
+WR 44 8B 01 43 ; set horizontal DE start/end position
+WR 44 8D 01 53 ; set horizontal DE start/end position
+WR 44 8F 01 01 ; configure freerun parameters FR_LL
+WR 44 90 01 DD ; configure freerun parameters FR_LL
+WR 44 91 01 00 ; set CP core to progressive mode
+WR 44 A5 01 3E ; set vertical DE start/end position (odd/prog)
+WR 44 A6 01 80 ; set vertical DE start/end position (odd/prog)
+WR 44 A7 01 28 ; set vertical DE start/end position (odd/prog)
+WR 44 A8 01 1F ; set vertical DE start/end position (even)
+WR 44 A9 01 42 ; set vertical DE start/end position (even)
+WR 44 AA 01 08 ; set vertical DE start/end position (even)
+WR 44 AB 01 3E ; configure freerun parameter LCOUNT_MAX
+WR 44 AC 01 80 ; configure freerun parameter LCOUNT_MAX
