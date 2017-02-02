@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# vlog-tools
+DIR_VT_HOME="home"
+DIR_VT_MOTION="motion"
+
+
+# Install HOME data
+DIR=$DIR_VT_HOME
+if [ -d "$DIR" ]; then
+  echo -e "\nInstalling home data files"
+  cp $DIR/.bash_aliases /root/.bash_aliases
+  echo -e "#.bash_aliases.conf file \nDIR_VT=${PWD}\n" | tee /root/.bash_aliases.conf
+else
+  echo -e "\nImpossible to install $DIR"
+fi
+
+
+# Install MOTION data
+DIR=$DIR_VT_MOTION
+if [ -d "$DIR" ]; then
+  echo -e "\nInstalling $DIR data files"
+  cp $DIR/motion.conf /usr/local/etc/motion/motion.conf
+else
+  echo -e "\nImpossible to install $DIR"
+fi
+
