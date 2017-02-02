@@ -32,3 +32,4 @@ WR 4C 12 01 63 ; ADI recommended write
 WR 4C 00 01 80 ; ADC power Up
 WR 4C 02 01 00 ; Ain_Sel to 000. (Ain 1,2,3)
 WR 4C C8 01 25 ; DLL_PHASE - 100101b
+WR 40 03 01 C0; OP_FORMAT_SEL, 8-bit PAR mode 0

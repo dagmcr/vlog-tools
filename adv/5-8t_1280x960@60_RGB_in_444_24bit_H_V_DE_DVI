@@ -54,3 +54,4 @@ WR 44 A9 01 42 ; set vertical DE start/end position (even)
 WR 44 AA 01 08 ; set vertical DE start/end position (even)
 WR 44 AB 01 3E ; configure freerun parameter LCOUNT_MAX
 WR 44 AC 01 80 ; configure freerun parameter LCOUNT_MAX
+WR 40 03 01 C0; OP_FORMAT_SEL, 8-bit PAR mode 0
