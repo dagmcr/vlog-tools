@@ -240,7 +240,6 @@ Main options:
   -y    --yavta              : make capture with yavta automatically
 
 EOF
-exit
 }
 
 vlogc() {

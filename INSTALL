@@ -4,6 +4,8 @@
 DIR_VT_HOME="home"
 DIR_VT_MOTION="motion"
 
+# return
+RET=1
 
 # Install HOME data
 DIR=$DIR_VT_HOME
@@ -13,6 +15,7 @@ if [ -d "$DIR" ]; then
   echo -e "#.bash_aliases.conf file \nDIR_VT=${PWD}\n" | tee /root/.bash_aliases.conf
 else
   echo -e "\nImpossible to install $DIR"
+  RET=0
 fi
 
 
@@ -23,5 +26,13 @@ if [ -d "$DIR" ]; then
   cp $DIR/motion.conf /usr/local/etc/motion/motion.conf
 else
   echo -e "\nImpossible to install $DIR"
+  RET=0
 fi
 
+# Check installation
+if [ $RET == 1 ]; then
+  echo -e "\nInstallation completed. Exit"
+  exit 
+else
+  echo -e "\nInstallation error. Please execute INSTALL in the same directory"
+fi
