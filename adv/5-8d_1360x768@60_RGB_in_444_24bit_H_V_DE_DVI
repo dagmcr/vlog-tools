@@ -1,0 +1,83 @@
+:5-8d 1360x768@60 RGB in_ 444 24bit H_V_DE DVI:
+50 10 05 ; Data output mode
+50 11 08 ; Bus Reversal
+50 19 10 ; ADV7842 Mode
+50 1B 02 ; ADV7511
+40 FF 80 ; I2C reset
+40 F1 90 ; SDP map
+40 F2 94 ; SDPIO map
+40 F3 84 ; AVLINK
+40 F4 80 ; CEC
+40 F5 7C ; INFOFRAME
+40 F8 4C ; AFE
+40 F9 64 ; KSV
+40 FA 6C ; EDID
+40 FB 68 ; HDMI
+40 FD 44 ; CP
+40 FE 48 ; VDP
+40 02 F6 ; Auto input color space, Limited Range RGB Output
+40 03 40 ; 24 bit SDR 444
+40 05 28 ; Disable AV Codes
+40 0C 40 ; Power up Part
+40 15 B0 ; Disable Tristate of Pins except for Audio pins
+40 19 80 ; enable LLC DLL
+40 33 40 ; select DLL for LLC clock
+44 73 EA ; Set manual gain of 0x2A8
+44 74 8A ; Set manual gain of 0x2A8
+44 75 A2 ; Set manual gain of 0x2A8
+44 76 A8 ; Set manual gain of 0x2A8
+44 85 0B ; Disable Autodetectmode for Sync_Source for CH1. Force CH1 to use HS&VS
+44 BE 02 ; HCOUNT ALIGN ADJ
+44 BF 32 ; HCOUNT ALIGN ADJ
+44 C3 39 ; ADI recommended write
+4C 0C 1F ; ADI Recommended write
+4C 12 63 ; ADI recommended write
+4C 00 80 ; ADC power Up
+4C 02 00 ; Ain_Sel to 000. (Ain 1,2,3)
+4C C8 33 ; DLL Phase, 110011b
+72 01 00 ; Set 'N' value at 6144
+72 02 18 ; Set 'N' value at 6144
+72 03 00 ; Set 'N' value at 6144
+72 15 00 ; 24-bit, 444 RGB input
+72 16 00 ; RGB 444
+72 18 46 ; Disable CSC
+72 40 80 ; General control packet enable
+72 41 10 ; Power down control
+72 49 A8 ; Set dither mode - 12-to-10 bit
+72 96 20 ; HPD interrupt clear
+72 56 08 ; Set active format aspect
+72 98 03 ; ADI recommended write
+72 99 02 ; ADI recommended write - lock count limit
+72 9C 30 ; PLL filter R1 value
+72 9D 61 ; Set clock divide
+72 A2 A4 ; ADI recommended write
+72 A3 A4 ; ADI Recommended Write
+72 A5 44 ; ADI Recommended Write
+72 AB 40 ; ADI Recommended Write
+72 AF 14 ; Select DVI mode
+72 BA A0 ; Set TX Clock Delay
+72 DE 9C ; ADI recommended write
+72 E4 60 ; VCO_Swing_Reference_Voltage
+72 FA 7D ; Nbr of times to look for good phase
+40 00 07 ; Set VID_STD to 0b000111 for autographics
+40 00 07 ; Set VID_STD to 0b000111 for autographics
+40 01 02 ; Set PRIM_MODE to 0b0010 for graphics mode
+40 16 C7 ; set PLL for 1792 samples per line
+40 17 00 ; set PLL for 1792 samples per line
+44 81 D0 ; enable blue screen freerun in autographics mode
+44 8B 43 ; set horizontal DE start/end position
+44 8C F8 ; set horizontal DE start/end position
+44 8B 43 ; set horizontal DE start/end position
+44 8D 1C ; set horizontal DE start/end position
+44 8F 02 ; configure freerun parameters FR_LL
+44 90 58 ; configure freerun parameters FR_LL
+44 91 00 ; set CP core to progressive mode
+44 A5 31 ; set vertical DE start/end position (odd/prog)
+44 A6 90 ; set vertical DE start/end position (odd/prog)
+44 A7 19 ; set vertical DE start/end position (odd/prog)
+44 A8 18 ; set vertical DE start/end position (even)
+44 A9 B1 ; set vertical DE start/end position (even)
+44 AA 99 ; set vertical DE start/end position (even)
+44 AB 31 ; configure freerun parameter LCOUNT_MAX
+44 AC B0 ; configure freerun parameter LCOUNT_MAX
+End

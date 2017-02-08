@@ -1,0 +1,66 @@
+#!/bin/bash
+# ADV7842-ScriptX
+# Read and writes i2c configuration for ADV7842
+
+# Init echo
+echo -e "\n***************\nADV7842-ScriptX\n***************\n"
+
+# Global variables
+I2C_BUS=2
+I2CSET_C=/usr/sbin/i2cset
+C_LINE=0
+echo -e "i2c: bin=${I2CSET_C} bus=${I2C_BUS}"
+PAR8_LINE="40 03 C0 ; 8 bit PAR mode"
+
+# Shift right 1 place 
+shift()
+{
+    addr1=0x${1}
+    addr2=`printf "%d\n" $addr1`
+    addr_write_dec=`expr $addr2 / 2`
+    addr_write_hex=`printf "%02X\n" $addr_write_dec`
+    echo ${addr_write_hex}
+}
+
+execi2c()
+{
+    # Get line as first argument
+
+    # Parse variables
+    ADDR=${i2cline:0:2};  ADDR=$(shift ${ADDR}); ADDR=0x${ADDR}
+    REG=${i2cline:3:2};   REG=0x${REG}
+    VALUE=${i2cline:6:2}; VALUE=0x${VALUE}
+
+    # Print parsed variables
+    echo -e "\nline:    ${C_LINE} - ${i2cline}"
+    echo -e "address: ${ADDR}"
+    echo -e "reg:     ${REG}"
+    echo -e "value:   ${VALUE}" 
+
+    # Command
+    CMD="${I2CSET_C} -y -f ${I2C_BUS} ${ADDR} ${REG} ${VALUE}"
+    echo -e "${CMD}"
+    eval ${CMD}
+}
+
+# Loop for reading each line and get address, register and value
+while read line; do    
+
+    # Check lines with data 
+    if [[ ${line} != "End" ]] && [[ ${C_LINE} != 0 ]]; then
+        # Parse line and exec i2c command
+        i2cline=${line}
+        execi2c
+    fi
+
+    if [[ ${line} == "End" ]]; then
+        # Force mode: PARALLEL 8 bit
+        i2cline=${PAR8_LINE}
+        execi2c
+    fi
+
+    # Increase line counter
+    C_LINE=$((${C_LINE}+1))
+done < $1 
+
+

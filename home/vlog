@@ -1,5 +1,6 @@
 source /usr/local/bin/vlog.conf
 RES=800x600
+FQ=60
 
 echo -e "\nVariables:"
 echo -e "REMOTE:$REMOTE"
@@ -220,6 +221,13 @@ adv_i2c_cfg() {
 	echo -e "\nPARALLEL 8-bits forced, file=${file}\n\n"
 }
 
+adv_i2c_cfg2() {
+	file=${1}	
+	pushd ${DIR_VT}/adv/; ./ADV7842-ScriptX ${file}; popd;
+
+	echo -e "\nPARALLEL 8-bits forced, file=${file}\n\n"
+}
+
 
 vlog() {
 
@@ -259,9 +267,9 @@ vlog-adv() {
         if [ $# -eq 0 ]; then
                 echo -e "\nchecking resolution..."
                 check_resolution
-                adv_option=${RES}
+                adv_option=${RES}@${FQ}
         else
-                adv_option=${1}
+                adv_option=${1}@${FQ}
         fi
 
 
@@ -275,30 +283,33 @@ vlog-adv() {
 		'EDID-hdmi')
 		adv_i2c_cfg "8-2_EDID_Download_HDMI"
 		;;
-		'800x600')
+		'800x600@60')
 		#adv_i2c_cfg "adv_cfg_vga_800x600"
 		adv_i2c_cfg "5-2g_800x600@60_SVGA_RGB_in_444_24bit_H_V_DE_DVI"
 		;;
-		'1024x768')
+		'1024x768@60')
 		adv_i2c_cfg "5-3e_1024x768@60_XGA_RGB_in_444_24bit_H_V_DE_DVI"
 		;;
-		'1152x864')
+		'1152x864@60')
 		adv_i2c_cfg "5-8r_1152x864@75_RGB_in_444_24bit_H_V_DE_DVI"
 		;;
-		'1280x720')
+		'1280x720@60')
 		adv_i2c_cfg "5-8a_1280x720@60_RGB_in_444_24bit_H_V_DE_DVI"
 		;;
-		'1280x960')
+		'1280x960@60')
 		adv_i2c_cfg "5-8t_1280x960@60_RGB_in_444_24bit_H_V_DE_DVI"
 		;;
-		'1280x1024')
+		'1280x1024@60')
 		adv_i2c_cfg "5-4d_1280x1024@60_SXGA_RGB_in_444_24bit_H_V_DE_DVI"
 		;;
-		'1920x1080'|'2208x1124')
+		'1920x1080@60'|'2208x1124@60')
 		adv_i2c_cfg "5-8c_1920x1080@60_RGB_in_444_24bit_H_V_DE_DVI"
 		;;
-		'1600x1200')
+		'1600x1200@60')
 		adv_i2c_cfg "5-5b_1600x1200@60_UXGA_RGB_in_444_24bit_H_V_DE_HDMI"
+		;;
+		'1360x768@60')
+		adv_i2c_cfg2 "5-8d_1360x768@60_RGB_in_444_24bit_H_V_DE_DVI"
 		;;
 		'hdmi')
 		adv_i2c_cfg "adv_cfg_gs"
