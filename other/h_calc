@@ -1,0 +1,30 @@
+#!/bin/bash
+
+h2=$(i2cget -y -f 2 0x34 0x1e)a
+h1=$(i2cget -y -f 2 0x34 0x1f)
+h1_1=${h1:2:2}
+h1_2=${h2:2:2}
+echo "TOTAL_LINE_WIDTH: $((16#$h1_2$h1_1)) [$h1_2 $h1_1]"
+
+
+hfp2=$(i2cget -y -f 2 0x34 0x20)
+hfp1=$(i2cget -y -f 2 0x34 0x21)
+hfp1_1=${hfp1:2:2}
+hfp1_2=${hfp2:2:2}
+echo "HSYNC_FRONT_PORCH: $((16#$hfp1_2$hfp1_1)) [$hfp1_2 $hfp1_1]"
+
+
+hpw2=$(i2cget -y -f 2 0x34 0x22)
+hpw1=$(i2cget -y -f 2 0x34 0x23)
+hpw1_1=${hpw1:2:2}
+hpw1_2=${hpw2:2:2}
+echo "HSYNC_PULSE_WIDTH: $((16#$hpw1_2$hpw1_1)) [$hpw1_2 $hpw1_1]"
+
+hbp2=$(i2cget -y -f 2 0x34 0x24)
+hbp1=$(i2cget -y -f 2 0x34 0x25)
+hbp1_1=${hbp1:2:2}
+hbp1_2=${hbp2:2:2}
+echo "HSYNC_BACK_PORCH: $((16#$hbp1_2$hbp1_1)) [$hbp1_2 $hbp1_1]"
+
+
+
