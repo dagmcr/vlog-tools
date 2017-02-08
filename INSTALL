@@ -11,8 +11,11 @@ RET=1
 DIR=$DIR_VT_HOME
 if [ -d "$DIR" ]; then
   echo -e "\nInstalling home data files"
-  cp $DIR/.bash_aliases /root/.bash_aliases
-  echo -e "#.bash_aliases.conf file \nDIR_VT=${PWD}\n" | tee /root/.bash_aliases.conf
+  cp $DIR/vlog /usr/local/bin/vlog
+  echo -e "#vlog.conf file \nDIR_VT=${PWD}\nREMOTE=\"dgomez@192.168.2.83:\"\nEDID_EN=1\n" | tee /usr/local/bin/vlog.conf
+  ln -s /usr/local/bin/vlog ${HOME}/vlog
+  ln -s /usr/local/bin/vlog.conf ${HOME}/vlog.conf
+  echo -e "#.bash_aliases file\nsource /usr/local/bin/vlog\n" | tee ${HOME}/.bash_aliases
 else
   echo -e "\nImpossible to install $DIR"
   RET=0
@@ -33,6 +36,8 @@ fi
 if [ $RET == 1 ]; then
   echo -e "\nInstallation completed. Exit"
   exit 
+  exit 0
+  exit 1
 else
   echo -e "\nInstallation error. Please execute INSTALL in the same directory"
 fi
