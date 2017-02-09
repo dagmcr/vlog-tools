@@ -215,6 +215,8 @@ adv_hdmi_status() {
 }
 
 adv_i2c_cfg() {
+
+	echo -e "\n8-bit PAR mode 0, file=${file}\n\n"
 	file=${1}	
 	pushd ${DIR_VT}/adv/; ./config.sh ${file}; popd;
 
@@ -222,10 +224,10 @@ adv_i2c_cfg() {
 }
 
 adv_i2c_cfg2() {
+
+	echo -e "\n8-bit PAR mode 0, file=${file}\n\n"
 	file=${1}	
 	pushd ${DIR_VT}/adv/; ./ADV7842-ScriptX ${file}; popd;
-
-	echo -e "\nPARALLEL 8-bits forced, file=${file}\n\n"
 }
 
 
@@ -277,7 +279,7 @@ vlog-adv() {
 	
 	case ${adv_option} in
 
-		'EDID-vga')
+		'EDID-vga@60')
 		adv_i2c_cfg "8-1_EDID_Download_VGA"
 		;;
 		'EDID-hdmi')
@@ -311,13 +313,16 @@ vlog-adv() {
 		'1360x768@60')
 		adv_i2c_cfg2 "5-8d_1360x768@60_RGB_in_444_24bit_H_V_DE_DVI"
 		;;
+		'1366x768@60'|'1792x798@60')
+		adv_i2c_cfg2 "5-2g_1366x768@60_SVGA_RGB_in_444_24bit_H_V_DE_DVI"
+		;;
 		'hdmi')
 		adv_i2c_cfg "adv_cfg_gs"
 		;;
 		'hdmi-status')
 		adv_hdmi_status
 		;;
-		*) echo "Invalid input"
+		*) echo "ADV: Invalid input"
 		;;
 	esac
 }

@@ -13,8 +13,8 @@ if [ -d "$DIR" ]; then
   echo -e "\nInstalling home data files"
   cp $DIR/vlog /usr/local/bin/vlog
   echo -e "#vlog.conf file \nDIR_VT=${PWD}\nREMOTE=\"dgomez@192.168.2.83:\"\nEDID_EN=1\n" | tee /usr/local/bin/vlog.conf
-  ln -s /usr/local/bin/vlog ${HOME}/vlog
-  ln -s /usr/local/bin/vlog.conf ${HOME}/vlog.conf
+  ln -fs /usr/local/bin/vlog ${HOME}/vlog
+  ln -fs /usr/local/bin/vlog.conf ${HOME}/vlog.conf
   echo -e "#.bash_aliases file\nsource /usr/local/bin/vlog\n" | tee ${HOME}/.bash_aliases
 else
   echo -e "\nImpossible to install $DIR"
