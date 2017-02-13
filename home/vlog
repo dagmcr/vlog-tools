@@ -285,6 +285,9 @@ vlog-adv() {
 		'EDID-hdmi')
 		adv_i2c_cfg "8-2_EDID_Download_HDMI"
 		;;
+		'640x480@60'|'800x525@60')
+		adv_i2c_cfg2 "5-1e_640x480@60_VGA_RGB_in_444_24bit_H_V_DE_DVI"
+		;;
 		'800x600@60')
 		#adv_i2c_cfg "adv_cfg_vga_800x600"
 		adv_i2c_cfg "5-2g_800x600@60_SVGA_RGB_in_444_24bit_H_V_DE_DVI"
