@@ -362,6 +362,7 @@ Main options:
   -a    --adv <mode>	     : configure adv with selected mode
   -mctl --media-ctl          : configure media-ctl automatically
   -y    --yavta              : make capture with yavta automatically
+  -f    --fame-rate          : specify frame rate (default value: 60Hz)
 
 EOF
 }
@@ -399,6 +400,9 @@ vlogc() {
 				;;
 			-yrc|--to-jpg)
 				yrc ${2}
+				;;
+			-f|--frame-rate)
+				FQ=${2}
 				;;
 			*)
 				#echo -e "\nError\n"
