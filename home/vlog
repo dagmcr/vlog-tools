@@ -352,7 +352,7 @@ vlog-res() {
 
 # Usage help
 usage() {
-    echo "usage:   $(basename $0) -<option> <arg>"
+    echo "usage:   vlogc -<option> <arg>"
 cat <<EOF
 
 Main options:
@@ -362,6 +362,7 @@ Main options:
   -a    --adv <mode>	     : configure adv with selected mode
   -mctl --media-ctl          : configure media-ctl automatically
   -y    --yavta              : make capture with yavta automatically
+  -yrc  <arg>  		     : yavta -> raw2rgbpnm -> convert jpg. Options: 'loop' 
   -f    --fame-rate          : specify frame rate (default value: 60Hz)
 
 EOF
